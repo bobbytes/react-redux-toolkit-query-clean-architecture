@@ -7,7 +7,7 @@ import store from './plugins/store'
 import App from './App'
 
 // start the mocking
-mockWorker.start()
+// mockWorker.start()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
