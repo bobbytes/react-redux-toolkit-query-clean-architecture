@@ -1,49 +1,23 @@
-import produce from 'immer'
-
-export const clone = <State = Record<string, unknown>>(state: State) => produce(state, () => {})
-
-export abstract class DomainModel<E> {
-  toObject(): E {
-    return clone<E>(this as any)
-  }
-}
-
-export class DomainError extends Error {
-  constructor(name: string, ...params: any[]) {
-    super(...params)
-
-    if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, DomainError)
-    }
-
-    this.name = name
-  }
-}
-
-export interface UseCase<Context, TValue, TError = string> {
-  execute(context: Context): Promise<Result<TValue, TError>>
-}
-
 export class Result<TValue, TError = string> {
   public readonly isSuccess: boolean
   public readonly isFailure: boolean
   public readonly _error: TError
   private _value: TValue
 
-  public constructor(
+  public constructor (
     isSuccess: boolean,
-    error: F | null,
-    value: TValue | null,
+    error: TError | null,
+    value: TValue | null
   ) {
     if (isSuccess && error) {
       console.error(
-        'InvalidOperation: A result cannot be successful and contain an error',
+        'InvalidOperation: A result cannot be successful and contain an error'
       )
       this.printError()
     }
     if (!isSuccess && !error) {
       console.error(
-        'InvalidOperation: A failing result needs to contain an error message',
+        'InvalidOperation: A failing result needs to contain an error message'
       )
       this.printError()
     }
@@ -56,7 +30,7 @@ export class Result<TValue, TError = string> {
     Object.freeze(this)
   }
 
-  private printError(): void {
+  private printError (): void {
     let match: any
     const stack = new Error().stack ?? ''
     try {
@@ -69,10 +43,10 @@ export class Result<TValue, TError = string> {
     console.error(match[0])
   }
 
-  public value(): TValue {
+  public value (): TValue {
     if (!this.isSuccess) {
       console.error(
-        'Can not get the value of an error result. Use errorValue instead.',
+        'Can not get the value of an error result. Use errorValue instead.'
       )
       console.error(JSON.stringify(this))
       this.printError()
@@ -80,7 +54,7 @@ export class Result<TValue, TError = string> {
     return this._value
   }
 
-  public error(): string {
+  public error (): string {
     const isErrorString = typeof this._error === 'string'
     if (!isErrorString) {
       return JSON.stringify(this._error)
@@ -89,16 +63,16 @@ export class Result<TValue, TError = string> {
     }
   }
 
-  public static ok<U = void, F = string>(value?: U): Result<U, F> {
+  public static ok<U = void, F = string> (value?: U): Result<U, F> {
     return new Result<U, F>(true, null, value ?? null)
   }
 
-  public static fail<U, F = string>(error: F): Result<U, F> {
+  public static fail<U = void, F = string> (error: F): Result<U, F> {
     return new Result<U, F>(false, error, null)
   }
 
-  public static combine<T = unknown, F = unknown>(
-    results: Result<T, F>[],
+  public static combine<T = unknown, F = unknown> (
+    results: Result<T, F>[]
   ): Result<T, F> {
     for (const result of results) {
       if (result.isFailure) return result
@@ -109,4 +83,8 @@ export class Result<TValue, TError = string> {
       return Result.ok<T, F>({} as unknown as T)
     }
   }
+}
+
+export interface UseCase<Context, TValue, TError = string> {
+  execute(context: Context): Promise<Result<TValue, TError>>
 }

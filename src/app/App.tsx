@@ -1,10 +1,11 @@
-import CssBaseline from '@mui/material/CssBaseline';
-import { Routes, Route } from 'react-router-dom';
-import PizzaPage from '../features/pizza/ui/pages/PizzaPage';
-import Header from './components/Header';
-import Main from './components/Main';
+import React from 'react'
+import CssBaseline from '@mui/material/CssBaseline'
+import { Routes, Route } from 'react-router-dom'
+import PizzaPage from '../features/pizza/ui/pages/PizzaPage'
+import Header from './components/Header'
+import Main from './components/Main'
 
-function App() {
+function App () {
   return (
     <>
       <CssBaseline />
@@ -15,7 +16,7 @@ function App() {
         </Routes>
       </Main>
     </>
-  );
+  )
 }
 
 export default App

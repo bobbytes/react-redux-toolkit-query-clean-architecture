@@ -1,10 +1,9 @@
-//import { useGetAllPizzaQuery } from '../../api/pizza.slice';
+import React from 'react'
+import { useGetAllPizzaQuery } from '../pizzaSlice'
 import PizzaList from '../components/PizzaList'
 
-import pizzas from "../../../../services/mock/data/pizzas"
-
 const PizzaPage = () => {
-  //const { data: pizzas = [] } = useGetAllPizzaQuery();
+  const { data: pizzas = [] } = useGetAllPizzaQuery()
 
   return (
     <>
