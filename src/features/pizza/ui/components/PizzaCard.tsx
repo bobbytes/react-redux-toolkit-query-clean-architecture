@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Pizza from '../../domain/Pizza';
+import React, { FC } from 'react'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import Pizza from '../../domain/Pizza'
 
 type PizzaCardProps = {
   pizza: Pizza
@@ -32,4 +32,4 @@ const PizzaCard: FC<PizzaCardProps> = ({ pizza }) => {
   )
 }
 
-export default PizzaCard;
+export default PizzaCard

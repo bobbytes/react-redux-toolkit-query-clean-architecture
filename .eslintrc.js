@@ -19,6 +19,11 @@ module.exports = {
     'react',
     '@typescript-eslint'
   ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   rules: {
     'no-useless-constructor': 'off'
   }

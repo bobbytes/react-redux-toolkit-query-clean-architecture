@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import Grid from '@mui/material/Grid';
-import Pizza from '../../domain/Pizza';
-import PizzaCard from './PizzaCard';
+import React, { FC } from 'react'
+import Grid from '@mui/material/Grid'
+import Pizza from '../../domain/Pizza'
+import PizzaCard from './PizzaCard'
 
 type PizzaListProps = {
   pizzas: Pizza[]
@@ -19,4 +19,4 @@ const PizzaList: FC<PizzaListProps> = ({ pizzas = [] }) => {
   )
 }
 
-export default PizzaList;
+export default PizzaList

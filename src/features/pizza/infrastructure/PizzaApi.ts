@@ -4,7 +4,7 @@ import PizzaRepository from '../service/ports/PizzaRepository'
 import PizzaDto from './dtos/PizzaDto'
 
 export default class PizzaApi implements PizzaRepository {
-  private pizzas: PizzaDto[] = [
+  public static pizzas: PizzaDto[] = [
     {
       id: '5de2eb2a-39ad-47a8-b1b7-5bff63554502',
       name: 'Hawaii',
@@ -48,13 +48,13 @@ export default class PizzaApi implements PizzaRepository {
 
   public async getAll () {
     await this.wait()
-    const pizzas = this.pizzas.map((pizzaDto) => this.mapDtoToPizza(pizzaDto))
+    const pizzas = PizzaApi.pizzas.map((pizzaDto) => this.mapDtoToPizza(pizzaDto))
     return Result.ok(pizzas)
   }
 
   public async getById (id: Id) {
     await this.wait()
-    const pizzaDto = this.pizzas.find(pizza => pizza.id === id)
+    const pizzaDto = PizzaApi.pizzas.find(pizza => pizza.id === id)
 
     return pizzaDto
       ? Result.ok(this.mapDtoToPizza(pizzaDto))
