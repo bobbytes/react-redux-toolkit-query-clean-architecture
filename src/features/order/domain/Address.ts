@@ -1,5 +1,3 @@
-import produce from 'immer'
-
 export type PostalCode = string
 export type City = string
 export type Street = string
@@ -22,10 +20,8 @@ export function getEmptyAddress (): Address {
 }
 
 export function getNewAddress (address?: Partial<Address>): Address {
-  return produce(getEmptyAddress(), (newAddressState) => {
-    newAddressState.postalCode = address?.postalCode ?? newAddressState.postalCode
-    newAddressState.city = address?.city ?? newAddressState.city
-    newAddressState.street = address?.street ?? newAddressState.street
-    newAddressState.streetNumber = address?.streetNumber ?? newAddressState.streetNumber
+  return Object.freeze({
+    ...getEmptyAddress(),
+    ...address
   })
 }

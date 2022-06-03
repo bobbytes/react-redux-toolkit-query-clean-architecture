@@ -1,5 +1,3 @@
-import produce from 'immer'
-
 export type Gender = 'male' | 'female'
 export type FirstName = string
 export type LastName = string
@@ -25,11 +23,8 @@ export function getEmptyContact (): Contact {
 }
 
 export function getNewContact (contact?: Partial<Contact>): Contact {
-  return produce(getEmptyContact(), (newContactState) => {
-    newContactState.gender = contact?.gender ?? newContactState.gender
-    newContactState.firstName = contact?.firstName ?? newContactState.firstName
-    newContactState.lastName = contact?.lastName ?? newContactState.lastName
-    newContactState.wantsNewsletter = contact?.wantsNewsletter ?? newContactState.wantsNewsletter
-    newContactState.email = contact?.email ?? newContactState.email
+  return Object.freeze({
+    ...getEmptyContact(),
+    ...contact
   })
 }

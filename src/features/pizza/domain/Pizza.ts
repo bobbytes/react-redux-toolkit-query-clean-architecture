@@ -1,5 +1,3 @@
-import produce from 'immer'
-
 export type Id = string
 export type Name = string
 export type Ingredients = string[]
@@ -22,11 +20,9 @@ export function getEmptyPizza (): Pizza {
 }
 
 export function getNewPizza (pizza?: Partial<Pizza>): Pizza {
-  return produce(getEmptyPizza(), (newPizzaState) => {
-    newPizzaState.id = pizza?.id ?? newPizzaState.id
-    newPizzaState.name = pizza?.name ?? newPizzaState.name
-    newPizzaState.ingredients = pizza?.ingredients ?? newPizzaState.ingredients
-    newPizzaState.price = pizza?.price ?? newPizzaState.price
+  return Object.freeze({
+    ...getEmptyPizza(),
+    ...pizza
   })
 }
 
