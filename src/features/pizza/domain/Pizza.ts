@@ -6,10 +6,10 @@ export type Ingredients = string[]
 export type Price = number
 
 export default interface Pizza {
-  id: Id
-  name: Name
-  ingredients: Ingredients
-  price: Price
+  readonly id: Id
+  readonly name: Name
+  readonly ingredients: Ingredients
+  readonly price: Price
 }
 
 export function getEmptyPizza (): Pizza {
