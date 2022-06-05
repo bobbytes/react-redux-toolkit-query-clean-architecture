@@ -1,27 +1,20 @@
-export type PostalCode = string
-export type City = string
-export type Street = string
-export type StreetNumber = string
-
 export default interface Address {
-  readonly postalCode: PostalCode
-  readonly city: City
-  readonly street: Street
-  readonly streetNumber: StreetNumber
+  readonly postalCode: string
+  readonly city: string
+  readonly street: string
+  readonly streetNumber: string
 }
 
-export function getEmptyAddress (): Address {
-  return {
+export function getNewAddress (address?: Partial<Address>): Address {
+  const defaultValues: Address = {
     postalCode: '',
     city: '',
     street: '',
     streetNumber: ''
   }
-}
 
-export function getNewAddress (address?: Partial<Address>): Address {
   return Object.freeze({
-    ...getEmptyAddress(),
+    ...defaultValues,
     ...address
   })
 }

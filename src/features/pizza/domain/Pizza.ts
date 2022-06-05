@@ -1,27 +1,20 @@
-export type Id = string
-export type Name = string
-export type Ingredients = string[]
-export type Price = number
-
 export default interface Pizza {
-  readonly id: Id
-  readonly name: Name
-  readonly ingredients: Ingredients
-  readonly price: Price
+  readonly id: string
+  readonly name: string
+  readonly ingredients: string[]
+  readonly price: number
 }
 
-export function getEmptyPizza (): Pizza {
-  return {
+export function getNewPizza (pizza?: Partial<Pizza>): Pizza {
+  const defaultValues: Pizza = {
     id: '',
     name: '',
     ingredients: [],
     price: 0
   }
-}
 
-export function getNewPizza (pizza?: Partial<Pizza>): Pizza {
   return Object.freeze({
-    ...getEmptyPizza(),
+    ...defaultValues,
     ...pizza
   })
 }
