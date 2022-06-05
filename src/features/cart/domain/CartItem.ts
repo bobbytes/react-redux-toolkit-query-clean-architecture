@@ -16,3 +16,7 @@ export function getNewCartItem (cartItem?: Partial<CartItem>): CartItem {
     ...cartItem
   })
 }
+
+export function getCartItemTotalAmount (cartItem: CartItem) {
+  return cartItem.pizza.price * cartItem.amount
+}

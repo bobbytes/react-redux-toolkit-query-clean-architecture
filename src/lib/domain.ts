@@ -88,3 +88,13 @@ export class Result<TValue, TError = string> {
 export interface UseCase<Context, TValue, TError = string> {
   execute(context: Context): Promise<Result<TValue, TError>>
 }
+
+export class DomainError extends Error {
+  constructor (name: string, ...params: any[]) {
+    super(...params)
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, DomainError)
+    }
+    this.name = name
+  }
+}

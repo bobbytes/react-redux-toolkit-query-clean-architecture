@@ -1,28 +1,37 @@
 import React from 'react'
-import Box from '@mui/material/Box'
-import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
+import { useSelector } from 'react-redux'
 import Stack from '@mui/material/Stack'
-import CartItem from './CartItem'
+import Button from '@mui/material/Button'
+import { selectCartItems, selectCartTotalAmount } from '../cartSlice'
+import CartPaper from './CartPaper'
+import CartEmptyState from './CartEmptyState'
+import CartTotalAmount from './CartTotalAmount'
+import CartItemList from './CartItemList'
 
 const Cart = () => {
+  const cartItems = useSelector(selectCartItems)
+  const cartTotalAmount = useSelector(selectCartTotalAmount)
+  const isCartEmpty = cartItems.length === 0
+
   return (
-    <Box>
-      <Typography
-        color="primary"
-        variant="h2"
-        gutterBottom>
-        Cart
-      </Typography>
-      <Paper sx={{ p: 2 }}>
-        <Stack spacing={2}>
-          <CartItem></CartItem>
-          <CartItem></CartItem>
-          <CartItem></CartItem>
-          <CartItem></CartItem>
-        </Stack>
-      </Paper >
-    </Box>
+    <CartPaper>
+      <Stack spacing={2}>
+        {isCartEmpty && (
+          <CartEmptyState />
+        )}
+        {!isCartEmpty && (
+          <CartItemList cartItems={cartItems} />
+        )}
+        <hr />
+        <CartTotalAmount totalAmount={cartTotalAmount} />
+        <Button
+          color="primary"
+          variant="contained"
+          disabled={isCartEmpty}>
+          Checkout
+        </Button>
+      </Stack>
+    </CartPaper >
   )
 }
 

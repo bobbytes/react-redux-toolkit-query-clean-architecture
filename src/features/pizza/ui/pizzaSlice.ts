@@ -17,7 +17,7 @@ const pizzaSlice = injectEndpoints({
           return { error: response.error() as any }
         }
 
-        return { data: response.value() }
+        return { data: response.value().pizzas }
       }
     }),
     getPizzaById: builder.query<Pizza, string>({
@@ -31,7 +31,7 @@ const pizzaSlice = injectEndpoints({
           return { error: response.error() as any }
         }
 
-        return { data: response.value() }
+        return { data: response.value().pizza }
       }
     })
   })

@@ -10,7 +10,7 @@ describe('service: GetAllPizzasUseCase', () => {
     const result = await useCase.execute()
 
     expect(result.isSuccess)
-    expect(result.value().length).toBe(3)
-    expect(result.value()[0].name).toBe('Hawaii')
+    expect(result.value().pizzas.length).toBe(3)
+    expect(result.value().pizzas[0].name).toBe('Hawaii')
   })
 })

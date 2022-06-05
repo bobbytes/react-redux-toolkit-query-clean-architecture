@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import cartSlice from '../../features/cart/ui/cartSlice'
 
-const { reducerPath, reducer, injectEndpoints } = createApi({
+const { reducerPath, reducer, middleware, injectEndpoints } = createApi({
   // replace with axios or plain fetch
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3030/api'
@@ -13,8 +14,16 @@ export {
   injectEndpoints
 }
 
-export default configureStore({
+const store = configureStore({
   reducer: {
-    [reducerPath]: reducer
-  }
+    [reducerPath]: reducer,
+    [cartSlice.name]: cartSlice.reducer
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+    .concat(middleware)
 })
+
+export default store
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

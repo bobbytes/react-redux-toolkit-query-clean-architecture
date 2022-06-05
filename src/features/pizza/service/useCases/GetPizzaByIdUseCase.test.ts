@@ -10,6 +10,6 @@ describe('service: GetPizzaByIdUseCase', () => {
     const result = await useCase.execute({ id: PizzaApi.pizzas[0].id })
 
     expect(result.isSuccess)
-    expect(result.value().name).toBe('Hawaii')
+    expect(result.value().pizza.name).toBe('Hawaii')
   })
 })

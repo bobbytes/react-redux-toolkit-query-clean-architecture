@@ -1,5 +1,5 @@
 import { Result } from '../../../lib/domain'
-import Pizza, { getNewPizza, Id } from '../domain/Pizza'
+import Pizza, { getNewPizza } from '../domain/Pizza'
 import PizzaRepository from '../service/ports/PizzaRepository'
 import PizzaDto from './dtos/PizzaDto'
 
@@ -52,7 +52,7 @@ export default class PizzaApi implements PizzaRepository {
     return Result.ok(pizzas)
   }
 
-  public async getById (id: Id) {
+  public async getById (id: string) {
     await this.wait()
     const pizzaDto = PizzaApi.pizzas.find(pizza => pizza.id === id)
 

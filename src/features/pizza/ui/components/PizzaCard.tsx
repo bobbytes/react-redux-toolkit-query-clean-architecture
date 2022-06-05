@@ -5,6 +5,8 @@ import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import { useAppDispatch } from '../../../../shared/hooks/hooks'
+import addPizzaToCartThunk from '../../../cart/ui/thunks/addPizzaToCartThunk'
 import Pizza from '../../domain/Pizza'
 
 type PizzaCardProps = {
@@ -12,7 +14,12 @@ type PizzaCardProps = {
 }
 
 const PizzaCard: FC<PizzaCardProps> = ({ pizza }) => {
+  const dispatch = useAppDispatch()
   const ingredients = pizza.ingredients.join(', ')
+
+  const handleAddPizzaToCart = () => {
+    dispatch(addPizzaToCartThunk(pizza))
+  }
 
   return (
     <Card>
@@ -29,6 +36,7 @@ const PizzaCard: FC<PizzaCardProps> = ({ pizza }) => {
           size="small"
           color="primary"
           startIcon={<AddShoppingCartIcon />}
+          onClick={handleAddPizzaToCart}
         >
           Add to cart
         </Button>
