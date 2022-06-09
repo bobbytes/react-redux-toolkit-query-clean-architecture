@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import RemovePizzaFromCartUseCase from '../../../order/service/useCases/RemovePizzaFromCartUseCase'
 import Pizza from '../../../pizza/domain/Pizza'
 import Cart from '../../domain/Cart'
+import RemovePizzaFromCartUseCase from '../../service/useCases/RemovePizzaFromCartUseCase'
 
 const removePizzaFromCartThunk = createAsyncThunk<Cart, Pizza>(
   'cart/removePizza',

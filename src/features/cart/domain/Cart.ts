@@ -82,10 +82,6 @@ export function removePizza (cart: Cart, pizza: Pizza) {
 
 export function getCartTotalAmount (cart: Cart): number {
   return cart.items.reduce((total, cartItem) => {
-    if (cartItem.amount === 0) {
-      return total
-    }
-
     return total + getCartItemTotalAmount(cartItem)
   }, 0)
 }
