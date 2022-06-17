@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
 import { useAppDispatch } from '../../../../shared/hooks/hooks'
-import CartItem from '../../domain/CartItem'
+import CartItem from '../../core/models/CartItem'
 import addPizzaToCartThunk from '../thunks/addPizzaToCartThunk'
 import removePizzaFromCartThunk from '../thunks/removePizzaFromCartThunk'
 

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import Pizza from '../../../pizza/domain/Pizza'
-import Cart from '../../domain/Cart'
-import AddPizzaToCartUseCase from '../../service/useCases/AddPizzaToCartUseCase'
+import Pizza from '../../../pizza/core/models/Pizza'
+import Cart from '../../core/models/Cart'
+import AddPizzaToCartUseCase from '../../core/useCases/AddPizzaToCartUseCase'
 
 const addPizzaToCartThunk = createAsyncThunk<Cart, Pizza>(
   'cart/addPizza',

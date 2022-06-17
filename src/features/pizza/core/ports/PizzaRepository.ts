@@ -1,5 +1,5 @@
 import { Result } from '../../../../lib/domain'
-import Pizza from '../../domain/Pizza'
+import Pizza from '../../core/models/Pizza'
 
 export default interface PizzaRepository {
   getAll(): Promise<Result<Pizza[], string>>

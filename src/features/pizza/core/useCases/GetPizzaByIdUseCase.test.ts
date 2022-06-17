@@ -1,5 +1,5 @@
 import { it, describe, expect } from 'vitest'
-import PizzaApi from '../../infrastructure/PizzaApi'
+import PizzaApi from '../../ui/adapters/PizzaApi'
 import GetPizzaByIdUseCase from './GetPizzaByIdUseCase'
 
 describe('service: GetPizzaByIdUseCase', () => {

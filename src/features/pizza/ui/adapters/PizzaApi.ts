@@ -1,6 +1,7 @@
-import { Result } from '../../../lib/domain'
-import Pizza, { getNewPizza } from '../domain/Pizza'
-import PizzaRepository from '../service/ports/PizzaRepository'
+
+import { Result } from '../../../../lib/domain'
+import Pizza, { getNewPizza } from '../../core/models/Pizza'
+import PizzaRepository from '../../core/ports/PizzaRepository'
 import PizzaDto from './dtos/PizzaDto'
 
 export default class PizzaApi implements PizzaRepository {

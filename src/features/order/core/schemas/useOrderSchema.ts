@@ -1,5 +1,5 @@
 import { object, SchemaOf } from 'yup'
-import Order from '../../domain/Order'
+import Order from '../../core/models/Order'
 import useAddressSchema from './useAddressSchema'
 import useContactSchema from './useContactSchema'
 

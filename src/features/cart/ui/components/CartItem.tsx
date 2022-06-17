@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Grid from '@mui/material/Grid'
+import CartItemModel, { getCartItemTotalAmount } from '../../core/models/CartItem'
 import CartItemAmount from './CartItemAmount'
-import CartItemModel, { getCartItemTotalAmount } from '../../domain/CartItem'
 
 type CartItemProps = {
   cartItem: CartItemModel

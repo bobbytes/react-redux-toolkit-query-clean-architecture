@@ -1,5 +1,5 @@
 import { object, string, SchemaOf } from 'yup'
-import Address from '../../domain/Address'
+import Address from '../models/Address'
 
 export default function useAddressSchema (): SchemaOf<Address> {
   return object({

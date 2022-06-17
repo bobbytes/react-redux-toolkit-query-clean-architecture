@@ -1,6 +1,6 @@
 import { Result, UseCase } from '../../../../lib/domain'
-import Cart, { addPizza } from '../../../cart/domain/Cart'
-import Pizza from '../../../pizza/domain/Pizza'
+import Pizza from '../../../pizza/core/models/Pizza'
+import Cart, { removePizza } from '../models/Cart'
 
 interface Context {
   cart: Cart,
@@ -11,14 +11,14 @@ interface Value {
   cart: Cart
 }
 
-export default class AddPizzaToCartUseCase implements UseCase<Context, Value> {
+export default class RemovePizzaFromCartUseCase implements UseCase<Context, Value> {
   async execute ({ cart, pizza }: Context): Promise<Result<Value, string>> {
     try {
-      const newCart = addPizza(cart, pizza)
+      const newCart = removePizza(cart, pizza)
 
       return Result.ok({ cart: newCart })
     } catch (error) {
-      return Result.fail('failed to add pizza to cart')
+      return Result.fail('failed to remove pizza from cart')
     }
   }
 }

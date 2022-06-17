@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
-import CartItemEntity from '../../domain/CartItem'
+import CartItemEntity from '../../core/models/CartItem'
 import CartItem from './CartItem'
 
 type CartItemListProps = {

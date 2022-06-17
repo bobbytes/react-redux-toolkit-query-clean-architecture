@@ -1,5 +1,5 @@
 import { Result, UseCase } from '../../../../lib/domain'
-import Pizza from '../../domain/Pizza'
+import Pizza from '../../core/models/Pizza'
 import PizzaRepository from '../ports/PizzaRepository'
 
 interface Context {

@@ -1,4 +1,4 @@
-import Pizza, { getNewPizza } from '../../pizza/domain/Pizza'
+import Pizza, { getNewPizza } from '../../../pizza/core/models/Pizza'
 
 export default interface CartItem {
   readonly pizza: Pizza,

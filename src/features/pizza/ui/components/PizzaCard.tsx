@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import { useAppDispatch } from '../../../../shared/hooks/hooks'
 import addPizzaToCartThunk from '../../../cart/ui/thunks/addPizzaToCartThunk'
-import Pizza from '../../domain/Pizza'
+import Pizza from '../../core/models/Pizza'
 
 type PizzaCardProps = {
   pizza: Pizza

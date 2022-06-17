@@ -1,4 +1,4 @@
-import Pizza, { arePizzasEqual } from '../../pizza/domain/Pizza'
+import Pizza, { arePizzasEqual } from '../../../pizza/core/models/Pizza'
 import CartItem, { getNewCartItem, getCartItemTotalAmount } from './CartItem'
 import MaxCartItemAmountError from './error/MaxCartItemAmountError'
 import MinCartItemAmountError from './error/MinCartItemAmountError'

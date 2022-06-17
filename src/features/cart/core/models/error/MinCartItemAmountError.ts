@@ -1,4 +1,4 @@
-import { DomainError } from '../../../../lib/domain'
+import { DomainError } from '../../../../../lib/domain'
 
 export default class MaxCartItemAmountError extends DomainError {
   constructor (...params: any[]) {

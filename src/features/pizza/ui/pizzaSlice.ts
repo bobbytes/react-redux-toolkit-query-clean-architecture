@@ -1,15 +1,13 @@
 import { injectEndpoints } from '../../../app/plugins/store'
-import Pizza from '../domain/Pizza'
-import PizzaApi from '../infrastructure/PizzaApi'
-import GetAllPizzasUseCase from '../service/useCases/GetAllPizzasUseCase'
-import GetPizzaByIdUseCase from '../service/useCases/GetPizzaByIdUseCase'
+import Pizza from '../core/models/Pizza'
+import useGetAllPizzaUseCase from './adapters/useGetAllPizzaUseCase'
+import useGetPizzaByIdUseCase from './adapters/useGetPizzaByIdUseCase'
 
 const pizzaSlice = injectEndpoints({
   endpoints: (builder) => ({
     getAllPizza: builder.query<Pizza[], void>({
       async queryFn () {
-        const pizzaRepository = new PizzaApi()
-        const getAllPizzaUseCase = new GetAllPizzasUseCase(pizzaRepository)
+        const getAllPizzaUseCase = useGetAllPizzaUseCase()
 
         const response = await getAllPizzaUseCase.execute()
 
@@ -22,8 +20,7 @@ const pizzaSlice = injectEndpoints({
     }),
     getPizzaById: builder.query<Pizza, string>({
       async queryFn (id) {
-        const pizzaRepository = new PizzaApi()
-        const getAllPizzaUseCase = new GetPizzaByIdUseCase(pizzaRepository)
+        const getAllPizzaUseCase = useGetPizzaByIdUseCase()
 
         const response = await getAllPizzaUseCase.execute({ id })
 

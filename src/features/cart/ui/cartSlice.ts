@@ -1,6 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import store from '../../../app/plugins/store'
-import Cart, { getCartTotalAmount, getNewCart } from '../domain/Cart'
+import Cart, { getCartTotalAmount, getNewCart } from '../core/models/Cart'
 import addPizzaToCartThunk from './thunks/addPizzaToCartThunk'
 import removePizzaFromCartThunk from './thunks/removePizzaFromCartThunk'
 
