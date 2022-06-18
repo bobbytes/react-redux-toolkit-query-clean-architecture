@@ -14,7 +14,7 @@ const defaults: Order = {
 
 export function getNewOrder (order: Partial<Order> = {}): Order {
   return produce(defaults, (state) => ({
-    contact: order.contact ?? state.contact,
-    deliveryAddress: order.deliveryAddress ?? state.deliveryAddress
+    contact: order.contact ? getNewContact(order.contact) : state.contact,
+    deliveryAddress: order.deliveryAddress ? getNewAddress(order.deliveryAddress) : state.deliveryAddress
   }))
 }

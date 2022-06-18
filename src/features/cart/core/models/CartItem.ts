@@ -13,7 +13,7 @@ const defaults: CartItem = {
 
 export function getNewCartItem (cartItem: Partial<CartItem> = {}): CartItem {
   return produce(defaults, (state) => ({
-    pizza: cartItem.pizza ?? state.pizza,
+    pizza: cartItem.pizza ? getNewPizza(cartItem.pizza) : state.pizza,
     amount: cartItem.amount ?? state.amount
   }))
 }
