@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
+import SectionTitle from '../../../../shared/ui/components/SectionTitle'
 import { useGetAllPizzaQuery } from '../pizzaSlice'
 import PizzaCard from './PizzaCard'
 import PizzaListLoadingIndicator from './PizzaListLoadingIndicator'
@@ -10,9 +10,9 @@ const PizzaList: FC = () => {
 
   return (
     <>
-      <Typography color="primary" variant="h2" gutterBottom>
+      <SectionTitle>
         Pizzas
-      </Typography>
+      </SectionTitle>
       {isLoading && (
         <PizzaListLoadingIndicator />
       )}

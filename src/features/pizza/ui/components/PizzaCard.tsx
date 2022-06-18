@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
-import { useAppDispatch } from '../../../../shared/hooks/hooks'
+import { useAppDispatch } from '../../../../shared/ui/hooks/hooks'
 import addPizzaToCartThunk from '../../../cart/ui/thunks/addPizzaToCartThunk'
 import Pizza from '../../core/models/Pizza'
 

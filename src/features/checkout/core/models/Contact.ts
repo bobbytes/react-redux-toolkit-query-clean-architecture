@@ -8,7 +8,7 @@ export default interface Contact {
   readonly email?: string
 }
 
-export function getNewContact (contact?: Partial<Contact>): Contact {
+export function getNewContact (contact: Partial<Contact> = {}): Contact {
   const defaultValues: Contact = {
     gender: 'male',
     firstName: '',

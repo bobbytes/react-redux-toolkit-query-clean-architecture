@@ -6,10 +6,10 @@ export default interface Order {
   readonly deliveryAddress: Address
 }
 
-export function getNewOrder (order?: Partial<Order>): Order {
+export function getNewOrder (order: Partial<Order> = {}): Order {
   const defaultValues: Order = {
-    contact: getNewContact(),
-    deliveryAddress: getNewAddress()
+    contact: getNewContact(order.contact),
+    deliveryAddress: getNewAddress(order.deliveryAddress)
   }
 
   return Object.freeze({

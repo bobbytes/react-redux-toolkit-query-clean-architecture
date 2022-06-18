@@ -3,13 +3,13 @@ import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline'
-import { useAppDispatch } from '../../../../shared/hooks/hooks'
+import { useAppDispatch } from '../../../../shared/ui/hooks/hooks'
 import CartItem from '../../core/models/CartItem'
 import addPizzaToCartThunk from '../thunks/addPizzaToCartThunk'
 import removePizzaFromCartThunk from '../thunks/removePizzaFromCartThunk'
 
 type CartItemAmountProps = {
-  cartItem: CartItem
+  cartItem: CartItem,
 };
 
 const CartItemAmount: FC<CartItemAmountProps> = ({ cartItem }) => {

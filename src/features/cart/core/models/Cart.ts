@@ -86,6 +86,12 @@ export function getCartTotalAmount (cart: Cart): number {
   }, 0)
 }
 
+export function getItemsCount (cart: Cart): number {
+  return cart.items.reduce((count, item) => {
+    return count + item.amount
+  }, 0)
+}
+
 function findPizza (cart: Cart, pizza: Pizza) {
   return cart.items.find((item) => arePizzasEqual(item.pizza, pizza))
 }

@@ -4,10 +4,11 @@ import CartItemModel, { getCartItemTotalAmount } from '../../core/models/CartIte
 import CartItemAmount from './CartItemAmount'
 
 type CartItemProps = {
-  cartItem: CartItemModel
+  cartItem: CartItemModel,
+  isReadonly?: boolean
 }
 
-const CartItem: FC<CartItemProps> = ({ cartItem }) => {
+const CartItem: FC<CartItemProps> = ({ cartItem, isReadonly }) => {
   const cartItemTotalAmount = getCartItemTotalAmount(cartItem)
 
   return (
@@ -19,11 +20,22 @@ const CartItem: FC<CartItemProps> = ({ cartItem }) => {
           display="flex"
           alignItems="center"
         >
-          {cartItem.pizza.name}
+          {isReadonly && (
+            <>
+              {cartItem.amount}x {cartItem.pizza.name} (CHF {cartItem.pizza.price})
+            </>
+          )}
+          {!isReadonly && (
+            <>
+              {cartItem.pizza.name}
+            </>
+          )}
         </Grid>
-        <Grid item xs sx={{ textAlign: 'center' }}>
-          <CartItemAmount cartItem={cartItem} />
-        </Grid>
+        {!isReadonly && (
+          <Grid item xs sx={{ textAlign: 'center' }}>
+            <CartItemAmount cartItem={cartItem} />
+          </Grid>
+        )}
         <Grid
           item
           xs

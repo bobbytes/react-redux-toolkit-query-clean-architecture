@@ -4,16 +4,19 @@ import CartItemEntity from '../../core/models/CartItem'
 import CartItem from './CartItem'
 
 type CartItemListProps = {
-  cartItems: CartItemEntity[]
+  cartItems: CartItemEntity[],
+  isReadonly?: boolean
 }
 
-const CartItemList: FC<CartItemListProps> = ({ cartItems }) => {
+const CartItemList: FC<CartItemListProps> = ({ cartItems, isReadonly }) => {
   return (
     <Stack spacing={2}>
       {cartItems.map((cartItem) => (
         <CartItem
           key={cartItem.pizza.id}
-          cartItem={cartItem} />
+          cartItem={cartItem}
+          isReadonly={isReadonly}
+        />
       ))}
     </Stack>
   )

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import { getNewAddress } from '../../core/models/Address'
-import { getNewContact } from '../../core/models/Contact'
-import { getNewOrder } from '../../core/models/Order'
+import { getNewAddress } from '../models/Address'
+import { getNewContact } from '../models/Contact'
+import { getNewOrder } from '../models/Order'
 import useOrderSchema from './useOrderSchema'
 
 const contactMock = getNewContact({

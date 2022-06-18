@@ -1,5 +1,5 @@
 import { object, string, mixed, SchemaOf, boolean } from 'yup'
-import Contact from '../../core/models/Contact'
+import Contact from '../models/Contact'
 
 export default function useContactSchema (): SchemaOf<Contact> {
   return object({

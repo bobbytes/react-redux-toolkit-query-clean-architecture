@@ -6,6 +6,7 @@ import theme from './plugins/theme'
 import PizzaPage from './pages/PizzaPage'
 import Header from './components/Header'
 import Main from './components/Main'
+import CheckoutPage from './pages/CheckoutPage'
 
 function App () {
   return (
@@ -15,6 +16,7 @@ function App () {
       <Main>
         <Routes>
           <Route path="/" element={<PizzaPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </Main>
     </ThemeProvider>
