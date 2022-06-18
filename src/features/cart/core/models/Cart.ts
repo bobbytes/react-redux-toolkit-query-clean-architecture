@@ -1,3 +1,4 @@
+import produce from 'immer'
 import Pizza, { arePizzasEqual } from '../../../pizza/core/models/Pizza'
 import CartItem, { getNewCartItem, getCartItemTotalAmount } from './CartItem'
 import MaxCartItemAmountError from './error/MaxCartItemAmountError'
@@ -8,15 +9,16 @@ export default interface Cart {
   readonly items: CartItem[];
 }
 
-export function getNewCart (cart?: Partial<Cart>): Cart {
-  const defaultValues: Cart = {
-    items: []
-  }
+const defaults: Cart = {
+  items: []
+}
 
-  return Object.freeze({
-    ...defaultValues,
-    ...cart
-  })
+export function getNewCart (cart: Partial<Cart> = {}): Cart {
+  return produce(defaults, (state) => ({
+    items: Array.isArray(cart.items)
+      ? cart.items.map((item) => getNewCartItem(item))
+      : state.items
+  }))
 }
 
 export function addPizza (cart: Cart, pizza: Pizza) {

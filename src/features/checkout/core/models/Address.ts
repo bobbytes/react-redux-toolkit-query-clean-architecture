@@ -1,3 +1,5 @@
+import produce from 'immer'
+
 export default interface Address {
   readonly postalCode: string
   readonly city: string
@@ -5,16 +7,18 @@ export default interface Address {
   readonly streetNumber: string
 }
 
-export function getNewAddress (address?: Partial<Address>): Address {
-  const defaultValues: Address = {
-    postalCode: '',
-    city: '',
-    street: '',
-    streetNumber: ''
-  }
+const defaults: Address = {
+  postalCode: '',
+  city: '',
+  street: '',
+  streetNumber: ''
+}
 
-  return Object.freeze({
-    ...defaultValues,
-    ...address
-  })
+export function getNewAddress (address: Partial<Address> = {}): Address {
+  return produce(defaults, (state) => ({
+    postalCode: address.postalCode ?? state.postalCode,
+    city: address.city ?? state.city,
+    street: address.street ?? state.street,
+    streetNumber: address.streetNumber ?? state.streetNumber
+  }))
 }

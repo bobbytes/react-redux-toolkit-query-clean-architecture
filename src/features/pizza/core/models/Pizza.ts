@@ -1,3 +1,5 @@
+import produce from 'immer'
+
 export default interface Pizza {
   readonly id: string
   readonly name: string
@@ -5,18 +7,20 @@ export default interface Pizza {
   readonly price: number
 }
 
-export function getNewPizza (pizza?: Partial<Pizza>): Pizza {
-  const defaultValues: Pizza = {
-    id: '',
-    name: '',
-    ingredients: [],
-    price: 0
-  }
+const defaults: Pizza = {
+  id: '',
+  name: '',
+  ingredients: [],
+  price: 0
+}
 
-  return Object.freeze({
-    ...defaultValues,
-    ...pizza
-  })
+export function getNewPizza (pizza: Partial<Pizza> = {}): Pizza {
+  return produce(defaults, (state) => ({
+    id: pizza.id ?? state.id,
+    name: pizza.name ?? state.name,
+    ingredients: pizza.ingredients ?? state.ingredients,
+    price: pizza.price ?? state.price
+  }))
 }
 
 export function arePizzasEqual (pizza: Pizza, other: Pizza) {

@@ -1,3 +1,4 @@
+import produce from 'immer'
 import Contact, { getNewContact } from './Contact'
 import Address, { getNewAddress } from './Address'
 
@@ -6,14 +7,14 @@ export default interface Order {
   readonly deliveryAddress: Address
 }
 
-export function getNewOrder (order: Partial<Order> = {}): Order {
-  const defaultValues: Order = {
-    contact: getNewContact(order.contact),
-    deliveryAddress: getNewAddress(order.deliveryAddress)
-  }
+const defaults: Order = {
+  contact: getNewContact(),
+  deliveryAddress: getNewAddress()
+}
 
-  return Object.freeze({
-    ...defaultValues,
-    ...order
-  })
+export function getNewOrder (order: Partial<Order> = {}): Order {
+  return produce(defaults, (state) => ({
+    contact: order.contact ?? state.contact,
+    deliveryAddress: order.deliveryAddress ?? state.deliveryAddress
+  }))
 }

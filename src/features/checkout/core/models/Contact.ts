@@ -1,3 +1,5 @@
+import produce from 'immer'
+
 export type Gender = 'male' | 'female'
 
 export default interface Contact {
@@ -8,17 +10,20 @@ export default interface Contact {
   readonly email?: string
 }
 
-export function getNewContact (contact: Partial<Contact> = {}): Contact {
-  const defaultValues: Contact = {
-    gender: 'male',
-    firstName: '',
-    lastName: '',
-    wantsNewsletter: false,
-    email: ''
-  }
+const defaults: Contact = {
+  gender: 'male',
+  firstName: '',
+  lastName: '',
+  wantsNewsletter: false,
+  email: ''
+}
 
-  return Object.freeze({
-    ...defaultValues,
-    ...contact
-  })
+export function getNewContact (contact: Partial<Contact> = {}): Contact {
+  return produce(defaults, (state) => ({
+    gender: contact.gender ?? state.gender,
+    firstName: contact.firstName ?? state.firstName,
+    lastName: contact.lastName ?? state.lastName,
+    wantsNewsletter: contact.wantsNewsletter ?? state.wantsNewsletter,
+    email: contact.email ?? state.email
+  }))
 }
