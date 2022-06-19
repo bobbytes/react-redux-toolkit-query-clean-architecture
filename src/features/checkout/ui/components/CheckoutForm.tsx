@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Grid from '@mui/material/Grid'
@@ -12,16 +12,21 @@ import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 import { useAppSelector } from '../../../../shared/ui/hooks/hooks'
 import FormPaper from '../../../../shared/ui/components/FormPaper'
+import { getNewOrder } from '../../core/models/Order'
 import useOrderSchema from '../../core/schemas/useOrderSchema'
 import { selectCheckout } from '../checkoutSlice'
 
 const CheckoutForm = () => {
   const order = useAppSelector(selectCheckout)
 
-  const { control, handleSubmit } = useForm({
-    defaultValues: order,
+  const { control, handleSubmit, reset } = useForm({
+    defaultValues: getNewOrder(),
     resolver: yupResolver(useOrderSchema())
   })
+
+  useEffect(() => {
+    reset(order)
+  }, [order])
 
   const onSubmit = () => { }
 
