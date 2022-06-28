@@ -163,6 +163,7 @@ const CheckoutForm = () => {
               color="primary"
               variant="contained"
               fullWidth
+              type="submit"
             >
               Order Pizza
             </Button>
